@@ -1,0 +1,102 @@
+.encabezado {
+    width: 100%;
+    background-color: #b83333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    
+}
+.dibujo img{
+    width: 30px;
+    height: auto;
+
+}
+
+.barra ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.barra ul li {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.barra ul li a {
+    text-decoration: none;
+    color: white;
+    font-size : 18px;
+    color: #000000;
+    font-style: italic;
+}
+
+.botones{
+    display:flex;
+    padding: 1px;
+}
+
+.botones label {
+    background-color: #76cd0c;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #e7ddd2;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+p {
+    color: rgb(241, 84, 102);
+    font-size: 20px;
+}
+
+.titulo {
+    background-color: rgb(13, 194, 22);
+    text-align: center;
+    justify-content: center;
+    position: relative;
+}
+.titulo h1 {
+    color: #cb401b;
+    font-size: 50px;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20%;
+    margin-top: center;
+}
+.gorro {
+    position: absolute;
+    top: 269px;
+    left: 1%; 
+    transform: translateX(-50%) translateY(-50%);
+    width: 50px; 
+    height: auto;
+}
+
+.galleta {
+    top: 270px;
+    left: 103%; 
+    transform: translateX(-50%) translateY(-50%);
+    width: 50px; 
+    height: auto;
+}
