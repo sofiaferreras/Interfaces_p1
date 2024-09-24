@@ -1,12 +1,10 @@
-body {
+html, body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
+    height: 100%;
+    overflow-x: hidden;
     background-color: #d1c4f0;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    cursor: default;
 }
 
 .encabezado {
@@ -21,77 +19,146 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
-
+    height: 60px;
+    box-sizing: border-box;
 }
 
 .logo img {
     width: 30px;
     height: auto;
-
 }
 
 .barra {
     display: flex;
+    align-items: center;
     padding: 1px;
     margin-left: auto;
 }
 
-.barra label {
-    margin-right: 10px;
-    margin-left: 10px;
-    padding: 10px 15px;
-    border-radius: 5px;
+.barra label, .barra a {
+    margin: 0 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    text-decoration: none;
+    color: white;
 }
 
-.barra label:hover {
-    background-color: #ae93ee;
+.barra a:hover {
+    text-decoration: underline;
 }
 
 .botones {
     display: flex;
-    padding: 1px;
+    align-items: center;
+    margin-top: 10px; 
 }
 
 .botones label {
-    background-color: #3c3d3b;
-    padding: 10px 20px;
-    margin-left: 10px;
-    border-radius: 5px;
+    margin: 0 15px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    text-decoration: none;
+    color: white;
+    background-color: #4a4a4a;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
 .botones label:hover {
-    background-color: #ae93ee;
+    background-color: #6a6a6a;
+    color: white;
 }
 
 .primera {
-    text-align: center;
+    height: calc(100vh - 60px + 20px); 
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    position: relative;
-    padding-bottom: 18%;
-}
-
-.primera h1 {
-    color: #2b292b;
-    font-size: 50px;
     align-items: center;
-    margin: 0;
-    padding-top: 18%;
-    margin-top: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #d1c4f0;
 }
 
-.primera p {
-    color: #2b292b;
-    font-size: 20px;
-    padding: 2%;
-    margin: 0;
+.pagina2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
+.pagina2 .contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
 
+.pagina2 .texto {
+    flex: 1;
+    text-align: left;
+    padding-right: 20px;
+}
+
+.pagina2 .imagen {
+    flex: 1;
+    text-align: right;
+}
+
+.pagina2 .imagen img {
+    max-width: 100%;
+    height: auto;
+    max-height: 80vh;
+}
+
+.pagina3, .pagina4, .pagina5 {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #7c57d9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #5a3dbf;
+}
+
+.titulo h1 {
+    font-size: 30px;
+    align-items: center;
+    margin-top: 30%;
+}
+
+.barra {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.botones {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.barra label, .botones label {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 10px;    
+}
 @media (max-width: 768px) {
     .titulo h1 {
         font-size: 30px;

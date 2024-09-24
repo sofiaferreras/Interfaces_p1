@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,38 +11,51 @@
 <body>
     <header class="encabezado">
         <div class="logo">
-            <img src="imagenes/copo.png">
+            <img src="imagenes/copo.png" alt="Logo">
         </div>
         <div class="barra">
-            <label class="inicio">Inicio</label>
-            <label class="papanoel">Papá Noel</label>
-            <label class="cartas">Cartas</label>
-            <label class="enviar">Envía tu carta</label>
-            <label class="jugar">!Juega ya!</label>
+           <a href="#inicio">Inicio</a>
+           <a href="#pagina2" class="papanoel">Papá Noel</a>
+           <a href="#pagina3" class="cartas">Cartas</a>
+           <a href="#pagina4" class="enviar">Envía tu carta</a>
+           <a href="#pagina5" class="jugar">¡Juega ya!</a>
         </div>
         <div class="botones">
             <label class="login">Log In</label>
             <label class="registro">Sign Up</label>
         </div>
     </header>
-    <section class="primera">
+    <section id="inicio" class="primera">
         <h1>El camino de Papá Noel</h1>
         <p>90 días 10 horas 15 minutos 30 segundos</p>
-        <label>¡Comienza ya!</label>
+        <button>¡Comienza ya!</button>
     </section>
-    <section class="segunda">
-        <div class="texto">
-            <h2>Christmas is coming</h2>
-            <p>Christmas is coming and Santa is preparing his trip to deliver gifts to all the children in the world.
-                Follow Santa's trip and see where he is going to deliver gifts.</p>
-        </div>
-        <div class="imagen">
-            <img src="imagenes/santa.png" alt="Santa" class="santa">
+    <section id="pagina2" class="pagina2">
+        <div class="contenido">
+            <div class="texto">
+                <h1>Christmas is coming</h1>
+                <p>Christmas is coming and Santa is preparing his trip to deliver gifts to all the children in the world. Follow Santa's trip and see where he is going to deliver gifts</p>
+            </div>
+            <div class="imagen">
+                <img src="imagenes/santaclaus.jpg" alt="Santa" class="santa">
+            </div>
         </div>
     </section>
-
-
-
+    <section id="pagina3" class="pagina3">
+        <h1>Las cartas</h1>
+        <p>Carta 1</p>
+    </section>
+    <section id="pagina4" class="pagina4">
+        <h1>Envía tu carta</h1>
+        <p>Nombre</p>
+        <p>Email</p>
+        <p>Ciudad</p>
+        <p>País</p>
+    </section>
+    <section id="pagina5" class="pagina5">
+        <h1>¡Juega!</h1>
+        <p>Juego 1</p>
+        <p>Juego 2</p>
+        <p>Juego 3</p>
+    </section>
 </body>
-
-</html>
