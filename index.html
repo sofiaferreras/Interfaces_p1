@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +11,15 @@
 <body>
     <header class="encabezado">
         <div class="logo">
-            <img src="imagenes/copo.png" alt="Logo">
+            <a href="#inicio">
+                <img src="imagenes/copo.png" alt="Logo">
+            </a>
         </div>
         <div class="barra">
-           <a href="#inicio">Inicio</a>
-           <a href="#pagina2" class="papanoel">Papá Noel</a>
-           <a href="#pagina3" class="cartas">Cartas</a>
-           <a href="#pagina4" class="enviar">Envía tu carta</a>
-           <a href="#pagina5" class="jugar">¡Juega ya!</a>
+            <a href="#pagina2" class="papanoel">Papá Noel</a>
+            <a href="#pagina3" class="cartas">Cartas</a>
+            <a href="#pagina4" class="enviar">Envía tu carta</a>
+            <a href="#pagina5" class="jugar">¡Juega ya!</a>
         </div>
         <div class="botones">
             <label class="login">Log In</label>
@@ -31,31 +32,172 @@
         <button>¡Comienza ya!</button>
     </section>
     <section id="pagina2" class="pagina2">
-        <div class="contenido">
-            <div class="texto">
+        <div class="texto">
+            <div class="arriba">
                 <h1>Christmas is coming</h1>
-                <p>Christmas is coming and Santa is preparing his trip to deliver gifts to all the children in the world. Follow Santa's trip and see where he is going to deliver gifts</p>
             </div>
-            <div class="imagen">
-                <img src="imagenes/santaclaus.jpg" alt="Santa" class="santa">
+            <div class="abajo">
+                <p>Christmas is coming and Santa is preparing his trip to deliver gifts to all the children in the
+                    world. Follow Santa's trip and see where he is going to deliver gifts
+                    Christmas is coming and Santa is preparing his trip to deliver gifts to all the children in the
+                    world. Follow Santa's trip and see where he is going to deliver gifts
+                    Christmas is coming and Santa is preparing his trip to deliver gifts to all the children in the
+                    world. Follow Santa's trip and see where he is going to deliver gifts
+                </p>
             </div>
+        </div>
+        <div class="imagen">
+            <img src="imagenes/santaclaus.jpg" alt="Santa" class="santa">
         </div>
     </section>
     <section id="pagina3" class="pagina3">
-        <h1>Las cartas</h1>
-        <p>Carta 1</p>
+        <div class="carta">
+            <h1>Las cartas</h1>
+        </div>
+        <div class="cartas">
+            <div class="carta">
+                <div><img src="imagenes/sofia.jpeg" alt="Sofía" class="sofia"></div>
+                <div class="nombre">
+                    <p>Sofía</p>
+                    <p>Madrid</p>
+                    <p>España</p>
+                </div>
+                <p>Este año como regalo solo quiero una PlayStation5 que es mi favorita y también quiero un jugete de
+                    Cars para mi hermano.
+                    Este año no me he portado muy bien, pero prometo portarme mejor el año que viene. Un saludo.
+                </p>
+            </div>
+            <div class="carta">
+                <img src="imagenes/adriana.jpeg" alt="Adriana" class="adriana">
+                <div class="nombre">
+                    <p>Adriana</p>
+                    <p>Almería</p>
+                    <p>España</p>
+                </div>
+                <p>Para este año quiero una bicicleta nueva y una mesa de mayores para estudiar.
+                    He sido buena y me he portado bien. Pero si no podeis traerme la bicicleta, me conformo con la mesa
+                    de mayores. Gracias.
+                </p>
+            </div>
+            <div class="carta">
+                <img src="imagenes/carla.jpeg" alt="Carla" class="carla">
+                <div class="nombre">
+                    <p>Trinidad</p>
+                    <p>Cochabamba</p>
+                    <p>Bolivia</p>
+                </div>
+                <p>Para este año quiero una muñeca nueva y una caja de pinturas para dibujar.
+                    Me he portado muy bien y he sacado muy buenas notas en el cole. Hasta Luego.
+                    PD: Te dejaré zanahorias para tus renos.
+                </p>
+
+            </div>
+            <div class="carta">
+                <img src="imagenes/juan.jpeg" alt="Juan" class="juan">
+                <div class="nombre">
+                    <p>Khabib</p>
+                    <p>Kyzyl</p>
+                    <p>Rusia</p>
+                </div>
+                <p>Este año quiero una pelota de fútbol y una camiseta de mi equipo favorito.
+                    Me he portado bien y he ayudado a mi madre en casa. Te dejaré leche y galletas. Gracias Papá Noel.
+                </p>
+            </div>
+            <div class="carta">
+                <img src="imagenes/pedro.jpeg" alt="Pedro" class="pedro">
+                <div class="nombre">
+                    <p>Maurizio</p>
+                    <p>Faltona</p>
+                    <p>Italia</p>
+                </div>
+                <p>Para este año quiero una bicicleta nueva y una caja de coches de HotWheels.
+                    Me he portado algunos días bien y he ayudado a mi padre en el jardín. Adiós.
+                </p>
+            </div>
+            <div class="carta">
+                <img src="imagenes/maría.jpeg" alt="María" class="maria">
+                <div class="nombre">
+                    <p>Fabiola</p>
+                    <p>Sao Luis</p>
+                    <p>Portugal</p>
+                </div>
+                <p>Este año quiero una muñeca Brat y un estuche de maquillaje de niñas.
+                    Me he portado muy bien y he ayudado a mi abuela en casa. Gracias Papá Noel.
+                    PD: Te dejaré leche y galletas.
+                </p>
+            </div>
+        </div>
     </section>
     <section id="pagina4" class="pagina4">
         <h1>Envía tu carta</h1>
-        <p>Nombre</p>
-        <p>Email</p>
-        <p>Ciudad</p>
-        <p>País</p>
+        <form action="/" method="post">
+            <ul>
+                <li>
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="user_name">
+                </li>
+                <li>
+                    <label for="mail">Email:</label>
+                    <input type="email" id="mail" name="user_mail">
+                </li>
+                <li>
+                    <label for="city">Ciudad:</label>
+                    <input type="text" id="city" name="user_city">
+                </li>
+                <li>
+                    <label for="country">País:</label>
+                    <input type="text" id="country" name="user_country">
+                </li>
+                <li>
+                    <label for="msg">Carta a Papá Noel:</label>
+                    <textarea id="msg" name="user_message"></textarea>
+                </li>
+            </ul>
+        </form>
+        <button>Enviar</button>
     </section>
     <section id="pagina5" class="pagina5">
-        <h1>¡Juega!</h1>
-        <p>Juego 1</p>
-        <p>Juego 2</p>
-        <p>Juego 3</p>
+        <div class="titulo">
+            <h1>¡Juega ya!</h1>
+        </div>
+        <div class="juegos">
+            <div class="Juegos">
+                <p>Juego 1</p>
+                <p>Juego 2</p>
+                <p>Juego 3</p>
+            </div>
+            <div class="fotos">
+                <img src="imagenes/juego1.png" alt="Juego1">
+                <img src="imagenes/juego2.png" alt="Juego2">
+                <img src="imagenes/juego3.png" alt="Juego3">
+            </div>
+        </div>
     </section>
+    <footer class="pie">
+        <div class="redes">
+            <div>
+                <a href="https://www.jaja.com">
+                <p>Política de privacidad</p>
+                </a>
+            </div>
+            <div class="facebook">
+                <a href="https://www.facebook.com">
+                <img src="imagenes/facebook.jpeg" alt="Facebook">
+                </a>
+            </div>
+            <div class="instagram">
+                <a href="https://www.instagram.com">
+                <img src="imagenes/instagram.jpeg" alt="Instagram">
+                </a>
+            </div>
+            <div class="twitter">
+                <a href="https://www.twitter.com">
+                <img src="imagenes/x.jpeg" alt="Twitter">
+                </a>
+            </div>
+            <div>
+                <p>© 2020 LaCuevaDelGrinch</p>
+            </div>
+        </div>
+    </footer>
 </body>
