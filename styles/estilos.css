@@ -4,12 +4,11 @@ html, body {
     font-family: 'Arial', sans-serif;
     height: 100%;
     overflow-x: hidden;
-    background-color: #d1c4f0;
 }
 
 .encabezado {
     width: 100%;
-    background-color: #7c57d9;
+    background-color: #7a9c9e;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -21,6 +20,21 @@ html, body {
     box-sizing: border-box;
 }
 
+.menu{
+    display: none;
+}
+
+#nav-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.icono {
+    display: none;
+    font-size:30px;
+    cursor:pointer;
+}
 .logo img {
     width: 30px;
     height: auto;
@@ -43,7 +57,7 @@ html, body {
 }
 
 .barra a:hover {
-    background-color: #6a6a6a;
+    background-color: #3d5858;
     color: white;
 }
 
@@ -78,63 +92,74 @@ html, body {
     text-align: center;
     padding: 0;
     box-sizing: border-box;
-    background-color: #d1c4f0;
+    background-image: url('../images/fondo3.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
 }
 
 .pagina2 {
     min-height: 100vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f0f0f0;
-}
-
-.pagina2 .texto {
-    flex:1;
-    display: flex;
+    background-image: url('../images/fondo3.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
     flex-direction: column;
-    justify-content: flex-start;
-    margin-top: 0px;
 }
 
-.pagina2 .texto .arriba {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
-    margin-top: 20px;
+.pagina2 .titulo {
+   align-self: flex-start;
+   margin-bottom: 20px;
+   margin-top: 20px;
+   margin-left: 40px;
+   margin-right: 40px;
+   font-size: 19px;
+   white-space: nowrap;
+   
 }
 
-.pagina2 .texto .abajo {
-    flex: 2;
+.pagina2 .contenido {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    width: 100%;
+}
+.pagina2 .texto h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.pagina2 .texto {
+    flex: 1;
+    text-align: left;
+    padding-left: 60px;
+    max-width: 550px; 
+    padding-right: 175px;
 }
 
 .pagina2 .imagen {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: left;
 }
 
 .pagina2 .imagen img {
     max-width: 100%;
-    max-height: 300px;
     height: auto;
+    max-height: 70vh;
+    padding-left: 125px;
 }
 
 .pagina3{
     min-height: 100vh;
-    background-color: #d1c4f0;
-    margin-top: 60px;
-    margin-bottom: 10px;
-    padding: 15px;
+    background-color: #bbd0d5;
+    padding-top:20px;
+    padding-bottom:10px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .pagina3 .carta{
@@ -143,7 +168,6 @@ html, body {
     align-items: center;
     box-sizing: border-box;
     padding-top:50px;
-    background-color: #d1c4f0;
     border-radius: 5px;
 }
 .pagina3 .cartas{
@@ -188,14 +212,15 @@ html, body {
     margin-bottom: 10px;
 }
 
+
 .pagina4 {
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
-}
-
-.pagina4 {
-    background-color: rgb(126, 215, 215);
+    background-image: url('../images/fondo3.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
     text-align: center;
 }
 
@@ -226,8 +251,12 @@ html, body {
     margin-top: 20px;
 }
 
+.pagina4:hover {
+    background-color: #3d5858;
+}
+
 button {
-    background-color: #7c57d9;
+    background-color: #5a7a7a;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -237,7 +266,7 @@ button {
 }
 
 button:hover {
-    background-color: #5a3dbf;
+    background-color: #3d5858;
 }
 
 .titulo h1 {
@@ -260,13 +289,87 @@ button:hover {
 .pagina5{
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    background-color: #d1c4f0;
+    justify-content: flex-start;
+    background-image: url('../images/fondo3.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
     padding: 15px;
 }
 
+.pagina5 .titulo{
+    margin:0;
+    padding:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    height:10%;
+}
+.pagina5 .titulo h1{
+    margin: 0;
+    padding: 0; 
+}
+.pagina5 .juegos{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    box-sizing:border-box;
+    flex-grow: 1;
+    width: 100%;
+    height: 90%;
+}
+.pagina5 .juegos .jugar{
+    display: inline-block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; 
+    width: 20%;
+    margin: 20px 0; 
+    padding: 10px 20px;
+}
+
+.pagina5 .juego .jugar a{
+    background-color: #3d5858; 
+    color: white; 
+    border-radius: 5px; 
+    transition: background-color 0.3s;
+}
+.pagina5 .juegos .jugar a:hover {
+    background-color: #3d5a5a; 
+}
+
+.pagina5 .juegos .jugar a:active {
+    background-color: #3d5858; 
+}
+
+.pagina5 .juegos .fotos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 80%;
+}
+.pagina5 .juegos .fotos img{
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.pagina5 .fotos .img-juego {
+    display: none;
+}
+
+.pagina5 .fotos img:target {
+    display: block;
+}
+
 .pie {
-    background-color: #5798d9;
+    background-color: #7a9c9e;
     color: white;
     justify-content: center;
     text-align: center;
@@ -282,7 +385,7 @@ button:hover {
 }
 .pie .redes div{
     margin: 0 10px;
-    color: white;
+    color: rgb(255, 251, 251);
     text-decoration: none;
 }
 .pie .redes img{
@@ -291,22 +394,70 @@ button:hover {
     border-radius:50%;
 }
 
+@media (max-width: 1024px) {
+    .pagina2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pagina2 .texto {
+        max-width: 90%; 
+        text-align: center; 
+        padding-left: 0; 
+        padding-right: 0;
+    }
+
+    .pagina2 .imagen img {
+        max-width: 80%; 
+        margin-top: 20px; 
+    }
+}
+
+
+
 @media (max-width: 768px) {
     .titulo h1 {
         font-size: 30px;
         align-items: center;
         margin-top: 30%;
-
+    }
+    .pagina2 .imagen img {
+        max-width: 70%; 
+        padding-left: 15px;
     }
 
     .barra {
-        flex-direction: row;
-        align-items: flex-start;
+        display:none;
+        flex-direction: column;
+        background-color: #3d5858;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .barra a{
+        padding:10px;
+        font-size:18px;
+    }
+    .icono {
+        display: block;
+    }
+    .menu:checked + .icono + .barra {
+        display: flex;
     }
 
     .botones {
+        display:flex;
         flex-direction: row;
-        align-items: flex-start;
+        align-items: center;
+        width:100%;
+    }
+    .botones label {
+        padding: 10px;
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
     }
 
     .barra label, .botones label {
@@ -315,9 +466,12 @@ button:hover {
         margin-bottom: 10px;
     }
 
-}
+    .pagina2 .contenido {
+        flex-direction: row;
+        align-items: center;
+        padding-left: 0; 
+    }
 
-@media (max-width: 600px) {
     .pagina3 .cartas {
         display: flex;
         flex-direction: column;
@@ -332,3 +486,22 @@ button:hover {
     }
 
 }
+
+@media (max-width: 600px){
+
+    .pagina2 .texto {
+        padding-left: 0; 
+        max-width: 100%; 
+        text-align: left; 
+    }
+
+    .pagina2 .imagen {
+        text-align: left; 
+    }
+
+    .pagina2 .imagen img {
+        max-width: 80%; 
+        height: auto;
+    }
+}
+
