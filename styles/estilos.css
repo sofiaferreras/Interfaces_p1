@@ -97,6 +97,20 @@ html, body {
     background-position: center; 
     background-repeat: no-repeat; 
 }
+#contador {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+#contador span {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
 
 .pagina2 {
     min-height: 100vh;
