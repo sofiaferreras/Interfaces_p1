@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/estilos.css">
-    <script src="script/script_1.js"></script>
+    <script src="script/script_1.js" defer></script>
     <title>LaCuevaDelGrinch</title>
 </head>
 
@@ -18,7 +18,7 @@
         </div>
         <input type="checkbox" id="menu" class="menu">
         <label for="menu" class="icono">&#9776;</label>
-
+        
         <nav class="barra">
             <a href="#pagina2" class="papanoel">Papá Noel</a>
             <a href="#pagina3" class="cartas">Cartas</a>
@@ -26,10 +26,42 @@
             <a href="#pagina5" class="jugar">¡Juega ya!</a>
         </nav>
         <div class="botones">
-            <label class="login">Log In</label>
-            <label class="registro">Sign Up</label>
+            <button id="logInBtn">Log In</button>
+            <button id="signUpBtn">Sign Up</button>
+        </div>
+        <div class="perfil" style="display: none;">
+            <img src="images/profile-icon.jpg" alt="Perfil" id="profileIcon" class="profile-icon">
+            <div class="dropdown-content" id="profileDropdown" style="display: none;">
+                <a href="#" id="miPerfil">Mi perfil</a>
+                <a href="#misCartas">Mis cartas</a>
+                <a href="#" id="logoutBtn">Cerrar sesión</a>
+            </div>
         </div>
     </header>
+
+    <div id="profileModal" class="modal">
+        <div class="boton-contenido">
+            <h2>¿Desea cambiar sus datos de inicio de sesión?</h2>
+            <span class="cerrar">&times;</span>
+            <form id="profileForm">
+                <label for="editUsername">Nombre del usuario</label>
+                <input type="text" id="editUsername" name="editUsername" required minlength="3">
+        
+                <label for="editEmail">Correo electrónico</label>
+                <input type="email" id="editEmail" name="editEmail" required>
+        
+                <label for="editCiudad">Ciudad</label>
+                <input type="text" id="editCiudad" name="editCiudad" required minlength="3">
+        
+                <label for="editPais">País</label>
+                <input type="text" id="editPais" name="editPais" required minlength="3">
+        
+                <button type="submit">Guardar cambios</button>
+                <button type="button" id="cancelProfileBtn">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
     <section id="inicio" class="primera">
         <h1 style="font-family:T; font-size: 50px;">El camino de Papá Noel</h1> 
         <p id="contador" style="font-family:T;">
@@ -40,6 +72,8 @@
         </p>
         <button>¡Comienza ya!</button>
     </section>
+    
+
     <section id="pagina2" class="pagina2">
         <div class="titulo">
             <h1 style="font-family: 'Times New Roman', serif;">Papá Noel</h1>
@@ -209,4 +243,74 @@
             </div>
         </div>
     </footer>
+    
+    <div id="signUpModal" class="modal">
+        <div class="boton-contenido">
+            <span class="cerrar">&times;</span>
+            <form id="signUpForm">
+                <label for="username">Nombre del usuario*</label>
+                <input type="text" id="username" name="username" required minlength="3">
+    
+                <label for="passwordSignUp">Contraseña*</label>
+                <input type="password" id="passwordSignUp" name="password" required>
+
+                <label for="repetirPassword">Repetir contraseña*</label>
+                <input type="password" id="repetirPassword" name="repetirPassword" required autocomplete="new-password">
+
+            <label for="email" class="form-label">Correo electrónico*</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="ciudad" class="form-label">Ciudad*</label>
+            <input type="text" id="ciudad" name="ciudad" required minlength="3">
+
+            <label for="pais" class="form-label">País*</label>
+            <input type="text" id="pais" name="pais" required minlength="3">
+
+            <label for="genero" class="form-label">Género</label>
+            <select id="genero" name="genero">
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otro">Otro</option>
+                <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+            </select>
+
+            <label for="hijos" class="form-label">¿Cuántos hijos / hijas tienes?</label>
+            <input type="number" id="hijos" name="hijos" min="0">
+
+            <div id="detallesHijos">
+                <div class="hijoTemplate" style="display:none;">
+                    <label for="nombreHijo" class="form-label">Nombre del hijo / hija*</label>
+                    <input type="text" class="nombreHijo" name="nombreHijo" required>
+
+                    <label for="edadHijo" class="form-label">Edad del hijo / hija*</label>
+                    <input type="number" class="edadHijo" name="edadHijo" required min="0">
+
+                    <label for="juguetesFavoritos" class="form-label">Juguetes favoritos*</label>
+                    <input type="text" class="juguetesFavoritos" name="juguetesFavoritos" required>
+                </div>
+            </div>
+                
+
+                <button type="submit">Registrarse</button>
+                <button type="button" id="cancelSignUpBtn">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="logInModal" class="modal">
+        <div class="boton-contenido">
+            <span class="cerrar">&times;</span>
+            <form id="logInForm">
+                <label for="logInUsername">Nombre del usuario*</label>
+                <input type="text" id="logInUsername" name="logInUsername" required>
+                <label for="passwordLogIn">Contraseña*</label>
+                <input type="password" id="passwordLogIn" name="password" required>
+                <input type="checkbox" id="mostrarContrasena"> Mostrar contraseña
+                <button type="submit" id="entrarBtn">Entrar</button>
+                <button type="button" id="cancelLogInBtn">Cancelar</button>
+            </form>
+        </div>
+    </div>
+    
 </body>
+</html>
