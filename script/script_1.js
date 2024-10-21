@@ -16,21 +16,23 @@ const actualizarContador = setInterval(function () {
     document.getElementById("segundos").innerHTML = segundos;
 
 }, 1000);
+//*carta para usuarios que esten y no esten iniciados*//
 document.getElementById("cartaForm").onsubmit = function (event) {
     event.preventDefault();
 
-    const loggedInUser = localStorage.getItem('loggedInUser');
+    const usuarioLogged = localStorage.getItem('usuarioLogged');
     const loginError = document.getElementById("loginError");
     const emailError = document.getElementById("emailError");
 
-    if (!loggedInUser) {
+
+    if (!usuarioLogged) {
         loginError.style.display = "block";
         emailError.style.display = "none";
         return;
     }
 
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(user => user.username === loggedInUser);
+    const user = users.find(user => user.username === usuarioLogged);
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("mail").value;
@@ -217,12 +219,12 @@ function updateNavBar(username) {
     document.getElementById("logoutBtn").addEventListener("click", function () {
             const confirmLogout = confirm("¿Está seguro de que desea cerrar sesión?");
         if (confirmLogout) {
-            localStorage.removeItem('loggedInUser');
+            localStorage.removeItem('usuarioLogged');
             location.reload();
         }
     });
 
-    localStorage.setItem('loggedInUser', username);
+    localStorage.setItem('usuarioLogged', username);
 }
 
 function closeLogInModal() {
@@ -231,9 +233,9 @@ function closeLogInModal() {
 }
 
 window.onload = function () {
-    const loggedInUser = localStorage.getItem('loggedInUser');
-    if (loggedInUser) {
-        updateNavBar(loggedInUser);
+    const usuarioLogged = localStorage.getItem('usuarioLogged');
+    if (usuarioLogged) {
+        updateNavBar(usuarioLogged);
     }
 
     const hijosInput = document.getElementById('hijos');
@@ -260,14 +262,13 @@ window.onload = function () {
 //* elementos que se abren cuando se hace click en el perfil*// 
 const profileIcon = document.getElementById("profileIcon");
 const profileDropdown = document.getElementById("profileDropdown");
+const misCartasDropdown = document.getElementById("misCartasDropdown");
 const miPerfil = document.getElementById("miPerfil");
 const profileModal = document.getElementById("profileModal");
 const misCartasModal = document.getElementById("misCartasModal");
 const closeProfileBtn = profileModal.getElementsByClassName("cerrar")[0];
 const cancelProfileBtn = document.getElementById("cancelProfileBtn");
 const closeCartasBtn = misCartasModal.getElementsByClassName("cerrar")[0];
-const cancelCartasBtn = document.getElementById("cancelCartasBtn");
-
 
 profileIcon.addEventListener("click", function () {
     profileDropdown.style.display = profileDropdown.style.display === "block" ? "none" : "block";
@@ -278,7 +279,7 @@ miPerfil.addEventListener("click", function () {
     profileDropdown.style.display = "none";
 });
 
-misCartasModal.addEventListener("click", function () {
+misCartasDropdown.addEventListener("click", function () {
     openmisCartasModal();
     profileDropdown.style.display = "none";
 });
@@ -286,12 +287,11 @@ misCartasModal.addEventListener("click", function () {
 closeProfileBtn.addEventListener("click", closeProfileModal);
 cancelProfileBtn.addEventListener("click", closeProfileModal);
 closeCartasBtn.addEventListener("click", closemisCartasModal);
-cancelCartasBtn.addEventListener("click", closemisCartasModal);
 
 function openProfileModal() {
-    const loggedInUser = localStorage.getItem('loggedInUser');
+    const usuarioLogged = localStorage.getItem('usuarioLogged');
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(user => user.username === loggedInUser);
+    const user = users.find(user => user.username === usuarioLogged);
 
     if (user) {
         document.getElementById("editUsername").value = user.username;
@@ -308,30 +308,59 @@ function closeProfileModal() {
 }
 
 function openmisCartasModal() {
-    const loggedInUser = localStorage.getItem('loggedInUser');
+    const usuarioLogged = localStorage.getItem('usuarioLogged');
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(user => user.username === loggedInUser);
+    const user = users.find(user => user.username === usuarioLogged);
+
+    const misCartasDiv = document.getElementById("cartasGuardadas");
+    misCartasDiv.innerHTML = ''; 
 
     if (user && user.cartas && user.cartas.length > 0) {
-        document.getElementById("cartasGuardadas").innerHTML = user.cartas.map(carta => `<p>${carta}</p>`).join('');
+        user.cartas.forEach((carta, index) => {
+            const cartaDiv = document.createElement('div');
+            cartaDiv.className = 'carta';
+
+            const cartaMessage = document.createElement('p');
+            cartaMessage.textContent = carta.message;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Borrar';
+            deleteButton.onclick = function() {
+                deleteCarta(index);
+            };
+
+            cartaDiv.appendChild(cartaMessage);
+            cartaDiv.appendChild(deleteButton);
+            misCartasDiv.appendChild(cartaDiv);
+        });
     } else {
-        document.getElementById("cartasGuardadas").innerHTML = '<p>No ha enviado ninguna carta.</p>';
+        const noCartasMessage = document.createElement('p');
+        noCartasMessage.textContent = 'No ha enviado ninguna carta.';
+        misCartasDiv.appendChild(noCartasMessage);
     }
 
-    cartasModal.style.display = "block";
+    misCartasModal.style.display = "block";
 }
 
 function closemisCartasModal() {
     misCartasModal.style.display = "none";
 }
 
-window.onclick = function (e) {
-    if (e.target == profileModal) {
-        closeProfileModal();
-    } else if (e.target == cartasModal) {
-        closemisCartasModal();
+function deleteCarta(index) {
+    const confirmDelete = confirm("¿Está seguro de que desea eliminar esta carta?");
+    if (confirmDelete) {
+        const usuarioLogged = localStorage.getItem('usuarioLogged');
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const userIndex = users.findIndex(user => user.username === usuarioLogged);
+
+        if (userIndex !== -1) {
+            users[userIndex].cartas.splice(index, 1);
+            localStorage.setItem('users', JSON.stringify(users));
+            openmisCartasModal(); 
+        }
     }
 }
+
 
 //*local storage del sign up para el log in*//
 document.getElementById("profileForm").onsubmit = function (event) {
@@ -343,7 +372,7 @@ document.getElementById("profileForm").onsubmit = function (event) {
     const pais = document.getElementById("editPais").value;
 
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    const userIndex = users.findIndex(user => user.username === localStorage.getItem('loggedInUser'));
+    const userIndex = users.findIndex(user => user.username === localStorage.getItem('usuarioLogged'));
 
     if (userIndex !== -1) {
         users[userIndex] = { username, email, ciudad, pais, password: users[userIndex].password };

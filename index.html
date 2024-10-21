@@ -33,7 +33,7 @@
             <img src="images/profile-icon.jpg" alt="Perfil" id="profileIcon" class="profile-icon">
             <div class="dropdown-content" id="profileDropdown" style="display: none;">
                 <a href="#" id="miPerfil">Mi perfil</a>
-                <a href="#misCartas">Mis cartas</a>
+                <a href="#" id="misCartasDropdown">Mis cartas</a>
                 <a href="#" id="logoutBtn">Cerrar sesión</a>
             </div>
         </div>
@@ -65,8 +65,8 @@
     <div id="misCartasModal" class="modal">
         <div class="boton-contenido">
             <h2 style="font-family: 'Times New Roman', serif;">Mis cartas</h2>
-            <span class="cerrar">&times;</span>
-            <div id="misCartas"></div>
+            <span class="cerrar"onclick="closemisCartasModal()">&times;</span>
+            <div id="cartasGuardadas"></div>
         </div>
     </div>
 
