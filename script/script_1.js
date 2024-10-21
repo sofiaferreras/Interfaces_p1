@@ -65,7 +65,7 @@ window.onclick = function (e) {
 
 const signUpForm = document.getElementById('signUpForm');
 
-// Sign-Up Form Submission
+
 signUpForm.onsubmit = function (event) {
     event.preventDefault();
 
@@ -135,7 +135,6 @@ function validarCorreo(correo) {
     return true;
 }
 
-// Login Form Submission
 document.getElementById("logInForm").onsubmit = function (event) {
     event.preventDefault();
 
@@ -200,7 +199,7 @@ window.onload = function () {
             }
         }
     };
-// Manejo del dropdown de perfil
+
 const profileIcon = document.getElementById("profileIcon");
 const profileDropdown = document.getElementById("profileDropdown");
 const miPerfil = document.getElementById("miPerfil");
