@@ -306,6 +306,29 @@ function openProfileModal() {
 function closeProfileModal() {
     profileModal.style.display = "none";
 }
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    var draggedElement = document.getElementById(data);
+    var targetElement = ev.target;
+
+    while (targetElement && !targetElement.classList.contains('carta')) {
+        targetElement = targetElement.parentElement;
+    }
+
+    if (targetElement && targetElement !== draggedElement) {
+        var parent = targetElement.parentElement;
+        parent.insertBefore(draggedElement, targetElement.nextSibling);
+    }
+}
 
 function openmisCartasModal() {
     const usuarioLogged = localStorage.getItem('usuarioLogged');
@@ -319,9 +342,32 @@ function openmisCartasModal() {
         user.cartas.forEach((carta, index) => {
             const cartaDiv = document.createElement('div');
             cartaDiv.className = 'carta';
+            cartaDiv.id = 'carta-' + index; 
+            cartaDiv.draggable = true; 
+            cartaDiv.ondragstart = drag; 
+
+            const nombreDiv = document.createElement('div');
+            nombreDiv.className = 'nombre';
+
+            const nombreP = document.createElement('p');
+            nombreP.textContent = carta.name;
+            nombreP.style.fontFamily = "'Times New Roman', serif";
+
+            const ciudadP = document.createElement('p');
+            ciudadP.textContent = carta.city;
+            ciudadP.style.fontFamily = "'Times New Roman', serif";
+
+            const paisP = document.createElement('p');
+            paisP.textContent = carta.country;
+            paisP.style.fontFamily = "'Times New Roman', serif";
+
+            nombreDiv.appendChild(nombreP);
+            nombreDiv.appendChild(ciudadP);
+            nombreDiv.appendChild(paisP);
 
             const cartaMessage = document.createElement('p');
             cartaMessage.textContent = carta.message;
+            cartaMessage.style.fontFamily = "'Times New Roman', serif";
 
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Borrar';
@@ -329,6 +375,7 @@ function openmisCartasModal() {
                 deleteCarta(index);
             };
 
+            cartaDiv.appendChild(nombreDiv);
             cartaDiv.appendChild(cartaMessage);
             cartaDiv.appendChild(deleteButton);
             misCartasDiv.appendChild(cartaDiv);
@@ -360,7 +407,6 @@ function deleteCarta(index) {
         }
     }
 }
-
 
 //*local storage del sign up para el log in*//
 document.getElementById("profileForm").onsubmit = function (event) {

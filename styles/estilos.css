@@ -483,6 +483,14 @@ button:hover {
 .dropdown-content a:hover {
     background-color: #ddd;
 }
+
+.carta{
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin:  5px 25px;
+    cursor: move;
+}
 @media (max-width: 1024px) {
     .pagina2 {
         flex-direction: column;
