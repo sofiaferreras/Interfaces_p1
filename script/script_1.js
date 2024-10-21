@@ -259,7 +259,7 @@ window.onload = function () {
         }
     };
 };
-//* elementos que se abren cuando se hace click en el perfil*// 
+//* elementos que se abren cuando se hace click en el perfil(cartas y mi perfil)*// 
 const profileIcon = document.getElementById("profileIcon");
 const profileDropdown = document.getElementById("profileDropdown");
 const misCartasDropdown = document.getElementById("misCartasDropdown");
@@ -280,13 +280,13 @@ miPerfil.addEventListener("click", function () {
 });
 
 misCartasDropdown.addEventListener("click", function () {
-    openmisCartasModal();
+    abrirmisCartasModal();
     profileDropdown.style.display = "none";
 });
 
 closeProfileBtn.addEventListener("click", closeProfileModal);
 cancelProfileBtn.addEventListener("click", closeProfileModal);
-closeCartasBtn.addEventListener("click", closemisCartasModal);
+closeCartasBtn.addEventListener("click", cerrarmisCartasModal);
 
 function openProfileModal() {
     const usuarioLogged = localStorage.getItem('usuarioLogged');
@@ -330,12 +330,12 @@ function drop(ev) {
     }
 }
 
-function openmisCartasModal() {
+function abrirmisCartasModal() {
     const usuarioLogged = localStorage.getItem('usuarioLogged');
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const user = users.find(user => user.username === usuarioLogged);
-
     const misCartasDiv = document.getElementById("cartasGuardadas");
+
     misCartasDiv.innerHTML = ''; 
 
     if (user && user.cartas && user.cartas.length > 0) {
@@ -365,45 +365,45 @@ function openmisCartasModal() {
             nombreDiv.appendChild(ciudadP);
             nombreDiv.appendChild(paisP);
 
-            const cartaMessage = document.createElement('p');
-            cartaMessage.textContent = carta.message;
-            cartaMessage.style.fontFamily = "'Times New Roman', serif";
+            const cartaMensaje = document.createElement('p');
+            cartaMensaje.textContent = carta.message;
+            cartaMensaje.style.fontFamily = "'Times New Roman', serif";
 
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Borrar';
-            deleteButton.onclick = function() {
-                deleteCarta(index);
+            const botonBorrar = document.createElement('button');
+            botonBorrar.textContent = 'Borrar';
+            botonBorrar.onclick = function() {
+                eliminarCarta(index);
             };
 
             cartaDiv.appendChild(nombreDiv);
-            cartaDiv.appendChild(cartaMessage);
-            cartaDiv.appendChild(deleteButton);
+            cartaDiv.appendChild(cartaMensaje);
+            cartaDiv.appendChild(botonBorrar);
             misCartasDiv.appendChild(cartaDiv);
         });
     } else {
-        const noCartasMessage = document.createElement('p');
-        noCartasMessage.textContent = 'No ha enviado ninguna carta.';
-        misCartasDiv.appendChild(noCartasMessage);
+        const noCartasMensaje = document.createElement('p');
+        noCartasMensaje.textContent = 'No ha enviado ninguna carta.';
+        misCartasDiv.appendChild(noCartasMensaje);
     }
 
     misCartasModal.style.display = "block";
 }
 
-function closemisCartasModal() {
+function cerrarmisCartasModal() {
     misCartasModal.style.display = "none";
 }
 
-function deleteCarta(index) {
-    const confirmDelete = confirm("¿Está seguro de que desea eliminar esta carta?");
-    if (confirmDelete) {
+function eliminarCarta(index) {
+    const confirmarEliminar = confirm("¿Está seguro de que desea eliminar esta carta?");
+    if (confirmarEliminar) {
         const usuarioLogged = localStorage.getItem('usuarioLogged');
         const users = JSON.parse(localStorage.getItem('users')) || [];
-        const userIndex = users.findIndex(user => user.username === usuarioLogged);
+        const IndiceUsuario = users.findIndex(user => user.username === usuarioLogged);
 
-        if (userIndex !== -1) {
-            users[userIndex].cartas.splice(index, 1);
+        if (IndiceUsuario !== -1) {
+            users[IndiceUsuario].cartas.splice(index, 1);
             localStorage.setItem('users', JSON.stringify(users));
-            openmisCartasModal(); 
+            abrirmisCartasModal(); 
         }
     }
 }
@@ -418,10 +418,10 @@ document.getElementById("profileForm").onsubmit = function (event) {
     const pais = document.getElementById("editPais").value;
 
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    const userIndex = users.findIndex(user => user.username === localStorage.getItem('usuarioLogged'));
+    const IndiceUsuario = users.findIndex(user => user.username === localStorage.getItem('usuarioLogged'));
 
-    if (userIndex !== -1) {
-        users[userIndex] = { username, email, ciudad, pais, password: users[userIndex].password };
+    if (IndiceUsuario !== -1) {
+        users[IndiceUsuario] = { username, email, ciudad, pais, password: users[IndiceUsuario].password };
         localStorage.setItem('users', JSON.stringify(users));
         alert('Datos actualizados correctamente');
         closeProfileModal();
