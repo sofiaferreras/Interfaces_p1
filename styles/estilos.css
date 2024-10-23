@@ -462,8 +462,29 @@ button:hover {
     height: 30px; 
     border-radius: 50%;
     cursor: pointer;
+}.form-group {
+    display: block;
+    margin-bottom: 15px; 
 }
 
+.form-group label,
+.form-group input,
+.form-group select {
+    display: block;
+    width: 100%;
+}
+
+.hijo-fields {
+    display: flex;
+    gap: 10px; /* Espacio entre los campos */
+}
+
+.hijo-fields label,
+.hijo-fields input {
+    display: inline-block;
+    width: auto;
+    flex: 1;
+}
 .dropdown-content {
     display: none;
     position: absolute;
