@@ -16,6 +16,7 @@ const actualizarContador = setInterval(function () {
     document.getElementById("segundos").innerHTML = segundos;
 
 }, 1000);
+
 //*carta para usuarios que esten y no esten iniciados*//
 document.getElementById("cartaForm").onsubmit = function (event) {
     event.preventDefault();
@@ -23,7 +24,6 @@ document.getElementById("cartaForm").onsubmit = function (event) {
     const usuarioLogged = localStorage.getItem('usuarioLogged');
     const loginError = document.getElementById("loginError");
     const emailError = document.getElementById("emailError");
-
 
     if (!usuarioLogged) {
         loginError.style.display = "block";
@@ -72,6 +72,14 @@ var cancelLogInBtn = document.getElementById("cancelLogInBtn");
 logInBtn.addEventListener("click", openLogInModal);
 closeLogInBtn.addEventListener("click", closeLogInModal);
 cancelLogInBtn.addEventListener("click", closeLogInModal);
+
+document.getElementById('clearSignUpBtn').addEventListener('click', function() {
+    document.getElementById('signUpForm').reset();
+});
+
+document.getElementById('clearLogInBtn').addEventListener('click', function() {
+    document.getElementById('logInForm').reset();
+});
 
 function openLogInModal() {
     logInModal.style.display = "block";
@@ -187,6 +195,7 @@ function validarCorreo(correo) {
 
     return true;
 }
+
 //*relleno de log in*//
 document.getElementById("logInForm").onsubmit = function (event) {
     event.preventDefault();
@@ -216,7 +225,7 @@ function updateNavBar(username) {
     perfilDiv.style.display = 'block';
 
     document.getElementById("logoutBtn").addEventListener("click", function () {
-            const confirmLogout = confirm("¿Está seguro de que desea cerrar sesión?");
+        const confirmLogout = confirm("¿Está seguro de que desea cerrar sesión?");
         if (confirmLogout) {
             localStorage.removeItem('usuarioLogged');
             location.reload();
@@ -258,6 +267,7 @@ window.onload = function () {
         }
     };
 };
+
 //* elementos que se abren cuando se hace click en el perfil(cartas y mi perfil)*// 
 const profileIcon = document.getElementById("profileIcon");
 const profileDropdown = document.getElementById("profileDropdown");
@@ -305,6 +315,7 @@ function openProfileModal() {
 function closeProfileModal() {
     profileModal.style.display = "none";
 }
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -417,14 +428,33 @@ document.getElementById("profileForm").onsubmit = function (event) {
     const pais = document.getElementById("editPais").value;
 
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    const IndiceUsuario = users.findIndex(user => user.username === localStorage.getItem('usuarioLogged'));
+    const usuarioLogged = localStorage.getItem('usuarioLogged');
+    const IndiceUsuario = users.findIndex(user => user.username === usuarioLogged);
 
     if (IndiceUsuario !== -1) {
-        users[IndiceUsuario] = { username, email, ciudad, pais, password: users[IndiceUsuario].password };
+        users[IndiceUsuario].username = username;
+        users[IndiceUsuario].email = email;
+        users[IndiceUsuario].ciudad = ciudad;
+        users[IndiceUsuario].pais = pais;
+
+     
         localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem('usuarioLogged', username);
+
         alert('Datos actualizados correctamente');
         closeProfileModal();
+        updateNavBar(username); 
     } else {
         alert('Error al actualizar los datos');
     }
 };
+
+// Mostrar contraseña en el formulario de inicio de sesión
+document.getElementById("mostrarContrasena").addEventListener("change", function () {
+    const passwordField = document.getElementById("passwordLogIn");
+    if (this.checked) {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+});
