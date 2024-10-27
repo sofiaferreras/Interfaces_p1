@@ -77,6 +77,7 @@ document.getElementById('clearSignUpBtn').addEventListener('click', function() {
     document.getElementById('signUpForm').reset();
 });
 
+
 document.getElementById('clearLogInBtn').addEventListener('click', function() {
     document.getElementById('logInForm').reset();
 });
