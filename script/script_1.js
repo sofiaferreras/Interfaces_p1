@@ -41,8 +41,7 @@ document.getElementById("cartaForm").onsubmit = function (event) {
     const message = document.getElementById("msg").value;
 
     if (user.email !== email) {
-        loginError.style.display = "none";
-        emailError.style.display = "block";
+        alert("El correo electrónico no coincide con el utilizado para iniciar sesión.");
         return;
     }
 
